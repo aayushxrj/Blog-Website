@@ -25,11 +25,25 @@ app.get("/", function(req, res){
 app.get("/about", function(req, res){
   res.render("about", {aboutContent:aboutContent});
 })
+
 app.get("/contact", function(req, res){
   res.render("contact", {contactContent:contactContent});
 })
 
+app.get("/compose", function(req, res){
+  res.render("compose", {contactContent:contactContent});
+})
 
+app.post("/compose", function(req, res){
+  // console.log(req.body.postTitle);
+  // console.log(req.body.postBody);
+  const post = {
+    title : req.body.postTitle,
+    content : req.body.postBody
+  };
+  console.log(post);
+
+});
 
 
 
