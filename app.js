@@ -15,11 +15,15 @@ app.use(express.static("public"));
 
 
 
-
+let posts =[];
 
 
 app.get("/", function(req, res){
-  res.render("home",{homeStartingContent:homeStartingContent});
+  res.render("home",{
+    homeStartingContent:homeStartingContent,
+    posts:posts
+  });
+  // console.log(posts);
 });
 
 app.get("/about", function(req, res){
@@ -41,7 +45,9 @@ app.post("/compose", function(req, res){
     title : req.body.postTitle,
     content : req.body.postBody
   };
-  console.log(post);
+  // console.log(post);
+  posts.push(post);
+  res.redirect("/");
 
 });
 
